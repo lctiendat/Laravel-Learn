@@ -1,0 +1,5 @@
+git checkout -b migration //
+git add . // add tat ca cac file vao git
+git commit -m "fwehofwef" // dong commit lai
+git push orgin db_migration //day db_migration len github
+
