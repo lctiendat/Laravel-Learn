@@ -13,5 +13,8 @@ class Category extends Model
       'name',
       'show'
     ];
+    public function newTypes(){
+      return $this->hasMany(NewsType::class,'category_id');
+    }
 
 }

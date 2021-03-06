@@ -15,7 +15,12 @@ class CreateMessengerTable extends Migration
     {
         Schema::create('messenger', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('content');
+            $table->string('rep_content');
+            $table->integer('show');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
