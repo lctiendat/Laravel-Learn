@@ -17,37 +17,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('test');
 });
-Route::get('test-management', function () {
-    return view('test');
-})->name('test');
-Route::get('test/{id}/category/{categoryID}', function ($id, $categoryID) {
-    return "Test so ${id} category=${categoryID}";
+Route::get('test', function () {
+    return "ahiahiahiahiia";
 });
-Route::get('test-management/{id}', function ($id) {
-    return "Test id = ${id}";
-})->name('test.show');
-Route::get('backend/user', function () {
-    return "Backend user";
-})->name('backend.user');
-Route::get('backend/product', function () {
-    return "Backend product";
-})->name('backend.product');
-Route::get('backend/news', function () {
-    return "Backend news";
-})->name('backend.news');
-// Route::group(['prefix'=>'backend'],function(){
-//     Route::get('user', function () {
-//         return "Backend user";
-//     })->name('backend.user');
-//     Route::get('product', function () {
-//         return "Backend product";
-//     })->name('backend.product');
-//     Route::get('news', function () {
-//         return "Backend news";
-//     })->name('backend.news');
-// });
-Route::group(['prefix'=>'backend','namespace'=>'Backend'],function(){
-    Route::get('user','UserController@index')->name('backend.user');
-    Route::get('product','ProductController@index')->name('backend.product');
+Route::get('total', function () {
+    $a = 1;
+    $b = 2;
+    return "Total :" . ($a + $b);
 });
-
+Route::get('test/{id}', function ($id) {
+    return "User" . $id;
+});
+Route::get('post/{post}/comment/{comment}', function ($postID, $commentID) {
+    return "Post: " . $postID . " comment: " . $commentID;
+});
+Route::get('user/{name?}', function ($name = null) {
+    if ($name == null) {
+        return "Name is exits";
+    } else {
+        return "Name " . $name;
+    }
+});
+Route::prefix('admin')->group(function () {
+    Route::get('user', function () {
+        return "Test group";
+    });
+});
