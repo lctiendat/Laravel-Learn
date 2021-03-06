@@ -27,7 +27,7 @@ Route::get('total', function () {
 });
 Route::get('test/{id}', function ($id) {
     return "User" . $id;
-});
+})->middleware('checkage');
 Route::get('post/{post}/comment/{comment}', function ($postID, $commentID) {
     return "Post: " . $postID . " comment: " . $commentID;
 });
