@@ -18,6 +18,8 @@ class CreateNewsTypeTable extends Migration
             $table->string('name');
             $table->string('show');
             $table->unsignedBigInteger('category_id');
+            $table->timestamps();
+
             $table->foreign('category_id')->references('id')->on('category');
         });
     }
