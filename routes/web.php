@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +43,9 @@ Route::prefix('admin')->group(function () {
         return "Test group";
     });
 });
+
+// Route::get('category', function(){
+//     $catList = Category::all();
+//     return view('category.index', array('catList' => $catList));
+// });
+Route::resource('category','\App\Http\Controllers\CategoryController');
