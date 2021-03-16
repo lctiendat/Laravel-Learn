@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\User;
-class TestController extends Controller
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        //kl
+        $catList = Category::all();
+        return view('category.index', array('catList' => $catList));
     }
 
     /**
@@ -23,7 +26,8 @@ class TestController extends Controller
      */
     public function create()
     {
-     $users = Users::
+        //
+        return view("category.create");
     }
 
     /**
@@ -34,7 +38,11 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Category;
+        $data->name = $request->name;
+        $data->show = $request->show;
+        $data->save();
+        return redirect('category/create')->with("<script>alert('Add success');</script>");
     }
 
     /**
