@@ -16,7 +16,14 @@
     <div class="container">
         <div id="header">Header</div>
         <div id="content">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div id="footer">Footer</div>
     </div>

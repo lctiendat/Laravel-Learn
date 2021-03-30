@@ -15,12 +15,14 @@ class CategoryController extends Controller
     public function index()
     {
         //kl
-        $catList = Category::all();
+        $catList = Category::limit(10)->get();
         return view('category.index', array('catList' => $catList));
     }
 
+
     /**
      * Show the form for creating a new resource.
+     * 
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,10 +40,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Category;
-        $data->name = $request->name;
-        $data->show = $request->show;
-        $data->save();
+        Category::create($request->all());
         return redirect('category/create')->with("<script>alert('Add success');</script>");
     }
 
@@ -54,6 +53,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        $catList = Category::find($id);
+        return view('category.show',array('catList' => $catList));
     }
 
     /**
@@ -64,7 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $catList = Category::find($id);
+        return view('category.edit', array('catList'=>$catList));
     }
 
     /**
@@ -77,6 +79,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $catList = Category::find($id);
+        $catList->update($request->all());
+        return view('category.update');
     }
 
     /**
@@ -84,9 +89,11 @@ class CategoryController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function destroy($id)
     {
+        Category::destroy($id);
+        return redirect('/category');
         //
     }
 }
