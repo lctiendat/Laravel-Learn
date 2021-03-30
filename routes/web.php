@@ -15,7 +15,7 @@ use App\Models\Category;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 Route::get('test', function () {
     return "ahiahiahiahiia";
